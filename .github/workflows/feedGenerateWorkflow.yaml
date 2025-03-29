@@ -6,21 +6,5 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - name: Set up Python'
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Generate feeds
-      run: |
-        python feed.py
-    - name: Push Repo
-      run: |
-        git config user.name git-user-actions
-        git config user.email govindkm.sv@gmail.com
-        git add .
-        git commit -m "Update feeds"
-        git push
+    - name: Run Custom Feed Generator action
+      uses: Govindkm/podcast-generator@develop
